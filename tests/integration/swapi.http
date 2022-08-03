@@ -1,0 +1,12 @@
+### Get People
+GET https://swapi.dev/api/people/
+
+### Get vehicles
+GET https://swapi.dev/api/vehicles/
+
+### Get species
+GET https://swapi.dev/api/species/
+
+### Get planets
+GET https://swapi.dev/api/planets/
+
