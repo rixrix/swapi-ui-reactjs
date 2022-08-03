@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const Vehicles = ({data}) => {
+import config from "../config";
+
+const Vehicles = ({ data }) => {
   return (
     <table className="table table-striped">
       <thead>
@@ -19,36 +21,33 @@ const Vehicles = ({data}) => {
         </tr>
       </thead>
       <tbody>
-        {
-          data.map(planet => (
-            <tr>
-              <th scope="row">{planet.name}</th>
-              <td>{planet.model}</td>
-              <td>{planet.manufacturer}</td>
-              <td>{planet.cost_in_credits}</td>
-              <td>{planet.length}</td>
-              <td>{planet.max_atmosphering_speed}</td>
-              <td>{planet.crew}</td>
-              <td>{planet.passengers}</td>
-              <td>{planet.cargo_capacity}</td>
-              <td>{planet.consumables}</td>
-              <td>{planet.vehicle_class}</td>
-            </tr>
-          ))
-        }
-
+        {data.map((planet, idx) => (
+          <tr key={idx}>
+            <th scope="row">{planet.name}</th>
+            <td>{planet.model}</td>
+            <td>{planet.manufacturer}</td>
+            <td>{planet.cost_in_credits}</td>
+            <td>{planet.length}</td>
+            <td>{planet.max_atmosphering_speed}</td>
+            <td>{planet.crew}</td>
+            <td>{planet.passengers}</td>
+            <td>{planet.cargo_capacity}</td>
+            <td>{planet.consumables}</td>
+            <td>{planet.vehicle_class}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
 };
 
 const VehiclesContainer = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [vehicles, setVehicles] = useState([]);
 
   useEffect(() => {
     const getInitialList = async () => {
-      const result = await fetch("https://swapi.dev/api/vehicles/");
+      const result = await fetch(`${config.apiUrl}/resource/vehicles/`);
       const data = await result.json();
       setVehicles(data.results);
     };
@@ -56,9 +55,7 @@ const VehiclesContainer = () => {
     getInitialList();
   });
 
-  return (
-    <Vehicles data={vehicles} />
-  );
+  return <Vehicles data={vehicles} />;
 };
 
 export default VehiclesContainer;

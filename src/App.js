@@ -1,25 +1,23 @@
-import './App.scss';
+import "./App.scss";
 
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Routes,
-  Link
+  Routes
 } from "react-router-dom";
 
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import Error from './pages/Error';
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
 
-import People from './components/People';
-import Planets from './components/Planets';
-import Species from './components/Species';
-import Vehicles from './components/Vehicles';
+import People from "./components/People";
+import Planets from "./components/Planets";
+import Species from "./components/Species";
+import Vehicles from "./components/Vehicles";
 
-const App = () => {
-  return (
+const App = () =>
+  (
     <Router>
       <Layout>
         <Routes>
@@ -33,5 +31,5 @@ const App = () => {
       </Layout>
     </Router>
   );
-};
+
 export default App;

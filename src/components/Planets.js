@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const Planets = ({data}) => {
+import config from "../config";
+
+const Planets = ({ data }) => {
   return (
     <table className="table table-striped">
       <thead>
@@ -17,34 +19,31 @@ const Planets = ({data}) => {
         </tr>
       </thead>
       <tbody>
-        {
-          data.map(planet => (
-            <tr>
-              <th scope="row">{planet.name}</th>
-              <td>{planet.rotation_period}</td>
-              <td>{planet.orbital_period}</td>
-              <td>{planet.diameter}</td>
-              <td>{planet.climate}</td>
-              <td>{planet.gavity}</td>
-              <td>{planet.terrain}</td>
-              <td>{planet.surface_water}</td>
-              <td>{planet.population}</td>
-            </tr>
-          ))
-        }
-
+        {data.map((planet, idx) => (
+          <tr key={idx}>
+            <th scope="row">{planet.name}</th>
+            <td>{planet.rotation_period}</td>
+            <td>{planet.orbital_period}</td>
+            <td>{planet.diameter}</td>
+            <td>{planet.climate}</td>
+            <td>{planet.gavity}</td>
+            <td>{planet.terrain}</td>
+            <td>{planet.surface_water}</td>
+            <td>{planet.population}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
 };
 
 const PlanetsContainer = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [planets, setPlanets] = useState([]);
 
   useEffect(() => {
     const getInitialList = async () => {
-      const result = await fetch("https://swapi.dev/api/planets/");
+      const result = await fetch(`${config.apiUrl}/resource/planets/`);
       const data = await result.json();
       setPlanets(data.results);
     };
@@ -52,9 +51,7 @@ const PlanetsContainer = () => {
     getInitialList();
   });
 
-  return (
-    <Planets data={planets} />
-  );
+  return <Planets data={planets} />;
 };
 
 export default PlanetsContainer;

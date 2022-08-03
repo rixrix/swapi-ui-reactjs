@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const Species = ({data}) => {
+import config from "../config";
+
+const Species = ({ data }) => {
   return (
     <table className="table table-striped">
       <thead>
@@ -17,34 +19,31 @@ const Species = ({data}) => {
         </tr>
       </thead>
       <tbody>
-        {
-          data.map(species => (
-            <tr>
-              <th scope="row">{species.name}</th>
-              <td>{species.classification}</td>
-              <td>{species.designation}</td>
-              <td>{species.average_height}</td>
-              <td>{species.skin_colors}</td>
-              <td>{species.hair_colors}</td>
-              <td>{species.eye_colors}</td>
-              <td>{species.average_lifespan}</td>
-              <td>{species.homeworld}</td>
-            </tr>
-          ))
-        }
-
+        {data.map((species, idx) => (
+          <tr key={idx}>
+            <th scope="row">{species.name}</th>
+            <td>{species.classification}</td>
+            <td>{species.designation}</td>
+            <td>{species.average_height}</td>
+            <td>{species.skin_colors}</td>
+            <td>{species.hair_colors}</td>
+            <td>{species.eye_colors}</td>
+            <td>{species.average_lifespan}</td>
+            <td>{species.homeworld}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
 };
 
 const SpeciesContainer = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [species, setSpecies] = useState([]);
 
   useEffect(() => {
     const getInitialList = async () => {
-      const result = await fetch("https://swapi.dev/api/species/");
+      const result = await fetch(`${config.apiUrl}/resource/species/`);
       const data = await result.json();
       setSpecies(data.results);
     };
@@ -52,9 +51,7 @@ const SpeciesContainer = () => {
     getInitialList();
   });
 
-  return (
-    <Species data={species} />
-  );
+  return <Species data={species} />;
 };
 
 export default SpeciesContainer;

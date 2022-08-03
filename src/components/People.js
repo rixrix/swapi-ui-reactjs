@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-const People = ({data}) => {
-  return (
-    <table className="table table-striped">
+import config from "../config";
+import Spinner from "./Spinner";
+
+const People = ({ data }) =>
+  (<table className="table table-striped">
       <thead>
         <tr>
           <th scope="col">name</th>
@@ -13,40 +15,43 @@ const People = ({data}) => {
         </tr>
       </thead>
       <tbody>
-        {
-          data.map(person => (
-            <tr>
-              <th scope="row">{person.name}</th>
-              <td>{person.height}</td>
-              <td>{person.mass}</td>
-              <td>{person.gender}</td>
-              <td>{person.homeworld}</td>
-            </tr>
-          ))
-        }
-
+        {data.map((person, idx) => (
+          <tr key={idx}>
+            <td>{person.height}</td>
+            <td>{person.mass}</td>
+            <td>{person.gender}</td>
+            <td>{person.homeworld}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
-};
 
 const PeopleContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
   const [people, setPeople] = useState([]);
 
   useEffect(() => {
     const getInitialList = async () => {
-      const result = await fetch(`https://swapi.dev/api/people/`);
-      const data = await result.json();
-      setPeople(data.results);
+      try {
+        const result = await fetch(`${config.apiUrl}/resource/people/`);
+        const data = await result.json();
+
+        setHasError(false);
+        setPeople(data.results);
+      } catch (error) {
+        setHasError(true);
+      } finally {
+        console.log(hasError);
+        setIsLoading(false);
+      }
     };
 
     getInitialList();
-  });
+  }, []);
 
-  return (
-    <People data={people} />
-  );
+  return isLoading ? <Spinner /> : <People data={people} />;
 };
 
 export default PeopleContainer;
