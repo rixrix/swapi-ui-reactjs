@@ -4,20 +4,21 @@ import config from "../config";
 
 const Vehicles = ({ data }) => {
   return (
+  <React.Fragment>
+  <h1 className="h2">Species</h1>
+    <div className="table-responsive">
     <table className="table table-striped">
       <thead>
         <tr>
-          <th scope="col">name</th>
-          <th scope="col">model</th>
-          <th scope="col">manufacturer</th>
-          <th scope="col">cost_in_credits</th>
-          <th scope="col">length</th>
-          <th scope="col">max_atmosphering_speed</th>
-          <th scope="col">crew</th>
-          <th scope="col">passengers</th>
-          <th scope="col">cargo_capacity</th>
-          <th scope="col">consumables</th>
-          <th scope="col">vehicle_class</th>
+          <th scope="col">Name</th>
+          <th scope="col">Model</th>
+          <th scope="col">Manufacturer</th>
+          <th scope="col">Length</th>
+          <th scope="col">Crew</th>
+          <th scope="col">Passengers</th>
+          <th scope="col">Cargo Capacity</th>
+          <th scope="col">Consumables</th>
+          <th scope="col">Vehicle Class</th>
         </tr>
       </thead>
       <tbody>
@@ -26,9 +27,7 @@ const Vehicles = ({ data }) => {
             <th scope="row">{planet.name}</th>
             <td>{planet.model}</td>
             <td>{planet.manufacturer}</td>
-            <td>{planet.cost_in_credits}</td>
             <td>{planet.length}</td>
-            <td>{planet.max_atmosphering_speed}</td>
             <td>{planet.crew}</td>
             <td>{planet.passengers}</td>
             <td>{planet.cargo_capacity}</td>
@@ -38,6 +37,8 @@ const Vehicles = ({ data }) => {
         ))}
       </tbody>
     </table>
+    </div>
+  </React.Fragment>
   );
 };
 

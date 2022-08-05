@@ -21,8 +21,8 @@
       "rules": {
         "max-len": "off",
         "class-methods-use-this": "off",
-        "quotes": ["warn", "single", {"allowTemplateLiterals": true}],
-        "arrow-body-style": "as-needed"
+        "quotes": ["warn", "double", {"allowTemplateLiterals": true}],
+        "arrow-body-style": 1
       }
     }
   ]

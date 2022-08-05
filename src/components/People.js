@@ -4,27 +4,33 @@ import config from "../config";
 import Spinner from "./Spinner";
 
 const People = ({ data }) =>
-  (<table className="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">name</th>
-          <th scope="col">height</th>
-          <th scope="col">mass</th>
-          <th scope="col">gender</th>
-          <th scope="col">homeworld</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((person, idx) => (
-          <tr key={idx}>
-            <td>{person.height}</td>
-            <td>{person.mass}</td>
-            <td>{person.gender}</td>
-            <td>{person.homeworld}</td>
+  (<React.Fragment>
+    <h1 className="h2">People</h1>
+    <div className="table-responsive">
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Height</th>
+            <th scope="col">Mass</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Homeworld</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((person, idx) => (
+            <tr key={idx}>
+              <td>{person.name}</td>
+              <td>{person.height}</td>
+              <td>{person.mass}</td>
+              <td>{person.gender}</td>
+              <td>{person.homeworld}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </React.Fragment>
   );
 
 const PeopleContainer = () => {

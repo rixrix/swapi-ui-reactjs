@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import Error from "./pages/Error";
 
 import People from "./components/People";
@@ -21,7 +21,7 @@ const App = () =>
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<People />} />
           <Route path="/people" element={<People />} />
           <Route path="/species" element={<Species />} />
           <Route path="/planets" element={<Planets />} />

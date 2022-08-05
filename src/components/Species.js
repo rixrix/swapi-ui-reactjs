@@ -4,18 +4,21 @@ import config from "../config";
 
 const Species = ({ data }) => {
   return (
+  <React.Fragment>
+    <h1 className="h2">Species</h1>
+    <div className="table-responsive">
     <table className="table table-striped">
       <thead>
         <tr>
-          <th scope="col">name</th>
-          <th scope="col">classification</th>
-          <th scope="col">designation</th>
-          <th scope="col">average_height</th>
-          <th scope="col">skin_colors</th>
-          <th scope="col">hair_colors</th>
-          <th scope="col">eye_colors</th>
-          <th scope="col">average_lifespan</th>
-          <th scope="col">homeworld</th>
+          <th scope="col">Name</th>
+          <th scope="col">Classification</th>
+          <th scope="col">Designation</th>
+          <th scope="col">Average Height</th>
+          <th scope="col">Skin Colors</th>
+          <th scope="col">Hair Colors</th>
+          <th scope="col">Eye Colors</th>
+          <th scope="col">Average Lifespan</th>
+          <th scope="col">Homeworld</th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +37,8 @@ const Species = ({ data }) => {
         ))}
       </tbody>
     </table>
+    </div>
+  </React.Fragment>
   );
 };
 

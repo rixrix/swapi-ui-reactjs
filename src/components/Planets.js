@@ -4,18 +4,21 @@ import config from "../config";
 
 const Planets = ({ data }) => {
   return (
+  <React.Fragment>
+    <h1 className="h2">Planets</h1>
+    <div className="table-responsive">
     <table className="table table-striped">
       <thead>
         <tr>
-          <th scope="col">name</th>
-          <th scope="col">rotation_period</th>
-          <th scope="col">orbital_period</th>
-          <th scope="col">diameter</th>
-          <th scope="col">climate</th>
-          <th scope="col">gravity</th>
-          <th scope="col">terrain</th>
-          <th scope="col">surface_water</th>
-          <th scope="col">population</th>
+          <th scope="col">Name</th>
+          <th scope="col">Rotation Oeriod</th>
+          <th scope="col">Orbital Period</th>
+          <th scope="col">Diameter</th>
+          <th scope="col">Climate</th>
+          <th scope="col">Gravity</th>
+          <th scope="col">Terrain</th>
+          <th scope="col">Surface Water</th>
+          <th scope="col">Population</th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +37,8 @@ const Planets = ({ data }) => {
         ))}
       </tbody>
     </table>
+    </div>
+  </React.Fragment>
   );
 };
 

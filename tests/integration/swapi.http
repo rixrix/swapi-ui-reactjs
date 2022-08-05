@@ -10,3 +10,6 @@ GET https://swapi.dev/api/species/
 ### Get planets
 GET https://swapi.dev/api/planets/
 
+### Get Homeworld
+
+GET https://swapi.dev/api/planets/1/
